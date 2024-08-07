@@ -1,10 +1,14 @@
-import React from 'react'
-import Header from './Header'
+import React from "react";
+import Header from "./Header";
+import CardPizza from "./CardPizza";
 
 const Home = () => {
   return (
-    <div><Header/></div>
-  )
-}
+    <div>
+      <CardPizza />
+      <Header />
+    </div>
+  );
+};
 
-export default Home
+export default Home;
