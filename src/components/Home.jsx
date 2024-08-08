@@ -5,7 +5,6 @@ import CardPizza from "./CardPizza";
 const Home = () => {
   return (
     <div>
-      <CardPizza />
       <Header />
     </div>
   );
