@@ -1,44 +1,27 @@
-import React from 'react'
+import React from "react";
+import logo from "../assets/img/pizza.jpg";
 
 const Header = () => {
-  const estilosContenedor = {
-    position: "relative",
+  const headerStyle = {
+    backgroundImage: `url(${logo})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    height: "300px",
     width: "100%",
-   
-    overflow: "hidden",
-  };
-
-  const estilosImagen = {
-    width: "100%",
-    
-    objectFit: "cover",
-    display: "block",
-  };
-
-  const estilosTexto = {
-   
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    color: "white", // Puedes ajustar el color según sea necesario
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "white",
     textAlign: "center",
   };
 
   return (
-    <div style={estilosContenedor}>
-      <img
-        src="http://www.downtownmakeover.com/images/news/pizza-lg.jpg"
-        alt="Imagen de pizza"
-        style={estilosImagen}
-      />
-      <div style={estilosTexto}>
-        <h1 style={{ fontFamily: "fantasy",  fontSize: "40px"}}>¡Pizzería Mamma Mia!</h1>
-        <p>¡Tenemos las mejores pizzas que podras encontrar!</p>
-      </div>
+    <div style={headerStyle}>
+      <h1>Pizzería Mamma Mia!</h1>
+      <p>Tenemos las mejores pizzas que podrás encontrar</p>
     </div>
   );
 };
 
-
-export default Header
+export default Header;
