@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../assets/img/pizza.jpg"; // Direccionando al img pizza.jpg
 
 const Header = () => {
-  // Creando una variable para los estilos css
+  // Creando una variable para los estilos css dentro de la variable Header
   const headerStyle = {
     position: "relative",
     backgroundImage: `url(${logo}), linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))`,
@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
 
-  // Enviando la variable entre{} con los estilos hacia la vista 
+  // Enviando la variable entre{} con los estilos dentro de la etiqueta Div
     <div style={headerStyle}>
       {/* Titulo */}
       <h1>Pizzería Mamma Mia!</h1>

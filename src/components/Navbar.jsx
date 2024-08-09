@@ -1,5 +1,7 @@
 import React from "react";
-import { contador } from "../utils/contador"; // direccionando ruta utils
+import { contador } from "../utils/contador";// direccionando ruta utils
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'  // dev de fontawesome
+import {faHouse, faCartShopping} from '@fortawesome/free-solid-svg-icons' // dev de fontawesome Solid
 
 const Navbar = () => {
   const total = 25000; // creando una variable total 
@@ -29,7 +31,8 @@ const Navbar = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="#">
-                  <i className="bi bi-house-door"></i> Home
+                  <i className="bi bi-house-door">
+                     </i> <FontAwesomeIcon icon={faHouse}/> Home 
                 </a>
               </li>
               {/* Operador ternario expresion 1 True*/}
@@ -69,7 +72,9 @@ const Navbar = () => {
             {/* a Funcion toLocaleString */}
             <span className="navbar-text ms-auto">
               <button className="btn btn-secondary">
-                <i className="bi bi-cash"></i> Total: ${contador(total)}
+                {/* agregando iconos con font awesome */}
+                <i className="bi bi-cash"><FontAwesomeIcon icon={faCartShopping}/>{" "}</i>
+                Total: ${contador(total)} 
               </button>
             </span>
           </div>
