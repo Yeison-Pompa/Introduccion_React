@@ -1,16 +1,19 @@
-
-import Navbar from './components/Navbar'
-import Home from './components/Home'
-import Footer from './components/Footer';
-/* import './App.css' */
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Footer from "./components/Footer";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import "./App.css";
 function App() {
   return (
-
     /* Renderizando los componentes */
     <>
       <Navbar />
-      <Home />
-      <Footer/>
+      {/*  <Home /> */}
+      <Login />
+
+      {/*      <Register/> */}
+      <Footer />
     </>
   );
 }
