@@ -9,8 +9,8 @@ function App() {
     /* Renderizando los componentes */
     <>
       <Navbar />
-      {/*  <Home /> */}
-      <Login />
+       <Home />
+{/*       <Login /> */}
 
       {/*      <Register/> */}
       <Footer />

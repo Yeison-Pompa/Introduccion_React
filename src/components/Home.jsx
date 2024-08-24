@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header' // importando el Header
 import CardPizza from './CardPizza' // importando la cardPizza
+import pizzas from '../assets/pizzas'
 
 
 const Home = () => {
