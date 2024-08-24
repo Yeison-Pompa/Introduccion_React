@@ -1,32 +1,36 @@
 import React from 'react';
 
-const CardPizza = (props) => { // enviando los valores por medio de la popiedad props
+const CardPizza = ({ pizza }) => { // Enviando los valores por medio de la propiedad pizza
   return (
     <>
-    {/* Dando estilos a la card */}
+      {/* Dando estilos a la card */}
       <div className="card mx-2 my-3" style={{ width: "18rem" }}>
-        {/* ingresando los valores por medio de las props */}
-        <img src={props.img} className="card-img-top" alt={props.name} />
+        {/* Imágenes de la pizza */}
+        <img src={pizza.img} className="card-img-top" alt={pizza.name} />
         <div className="card-body">
-          {/* ingresando los valores por medio de las props */}
-          <h5 className="card-title fw-light mb-3">{props.name}</h5>
-          {/* ingresando los valores por medio de las props */}
-          <p className="card-text h6 fw-light">
-            Ingredientes: {props.ingredients.join(", ")}
-          </p>
+          {/* Nombre de la pizza */}
+          <h5 className="card-title fw-light mb-3">{pizza.name}</h5>
+
+          {/* Lista de ingredientes */}
+          <ul>
+            {pizza.ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li> // Usar index como key
+            ))}
+          </ul>
+
           <p className="fw-light">
             <i className="fas fa-map-marker-alt fa-xs"></i>
           </p>
           <hr />
           <ul className="list-group list-group-flush text-right">
             <li className="list-group-item ms-auto fw-light">
-             {/* ingresando los valores por medio de las props */}
-              <span className="h5 fw-bold green ms-3">Precio: ${props.price}</span>
+              {/* Precio de la pizza */}
+              <span className="h5 fw-bold green ms-3">Precio: ${pizza.price}</span>
             </li>
           </ul>
           {/* Agregando botones */}
           <div className="d-flex justify-content-between mt-3">
-            <button className="btn btn-primary">Ver mas</button>
+            <button className="btn btn-primary">Ver más</button>
             <button className="btn btn-secondary">Añadir</button>
           </div>
         </div>
