@@ -11,8 +11,8 @@ function App() {
     /* Renderizando los componentes */
     <>
       <Navbar />
-      <Cart producto={producto}  />
-{/*        <Home /> */}
+      {/* <Cart producto={producto}  /> */}
+       <Home />
 {/*       <Login /> */}
 
       {/*      <Register/> */}
