@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const CardPizza = ({ pizza }) => { // Enviando los valores por medio de la propiedad pizza
+const CardPizza = ({ pizza }) => {
+  // Enviando los valores por medio de la propiedad pizza
   return (
     <>
       {/* Dando estilos a la card */}
@@ -25,7 +26,9 @@ const CardPizza = ({ pizza }) => { // Enviando los valores por medio de la propi
           <ul className="list-group list-group-flush text-right">
             <li className="list-group-item ms-auto fw-light">
               {/* Precio de la pizza */}
-              <span className="h5 fw-bold green ms-3">Precio: ${pizza.price}</span>
+              <span className="h5 fw-bold green ms-3">
+                Precio: ${pizza.price}
+              </span>
             </li>
           </ul>
           {/* Agregando botones */}
