@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardPizza from "../pages/CardPizza";
+import { Link } from "react-router-dom";
+
 
 const Detalle = () => {
   const [pizza, setPizza] = useState(null);

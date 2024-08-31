@@ -8,6 +8,8 @@ import Cart from "./pages/Cart";
 import { producto } from "./assets/pizzas";
 import { Route, Routes } from "react-router-dom"; // importando las rutas, ruta
 import Profile from "./components/Profile";
+import NotFound from "./components/NotFound";
+
 
 function App() {
   return (
@@ -21,11 +23,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart producto={producto} />} />
-        {/*    <Route path="/pizza/p001" element={<Detalles />} /> */}
-        <Route path="/profile" element={<Profile />} />
-        {/* Crear nuevos componentes */}
-        {/* <Route path="*" element={<NotFound />} /> */}
-        {/* Crear nuevo componente */}
+       <Route path="/pizza/p001" element={<Home />} />
+        <Route path="/profile" element={<Profile />} /> {/* Crear nuevos componentes */}
+        <Route path="*" element={<NotFound />} /> {/* Crear nuevo componente */}
       </Routes>
       <Footer />
     </>
