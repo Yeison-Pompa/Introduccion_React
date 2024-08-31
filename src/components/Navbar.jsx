@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"; // Asegúrate de que la importación de
 
 const Navbar = () => {
   const total = 25000; // creando una variable total
-  const token = (true); // creando variable token
+  const token = true; // creando variable token
 
   /* retornando hacia la vista  */
   return (
@@ -39,44 +39,46 @@ const Navbar = () => {
               </li>
               {/* Operador ternario expresión 1 True */}
               {/* {token ? ( */}
-                <>
-                  <li className="nav-item">
-                    <Link to="/profile" className="nav-link active">
-                      <i className="bi bi-person"></i> Profile
-                    </Link>
-                  </li>
-                  <li className="nav-item">
+              <>
+                <li className="nav-item">
+                  <Link to="/profile" className="nav-link active">
+                    <i className="bi bi-person"></i> Profile
+                  </Link>
+                </li>
+                {/*   <li className="nav-item">
                     <Link to="/logout" className="nav-link active">
                       <i className="bi bi-box-arrow-right"></i> Logout
                     </Link>
-                  </li>
-                </>
-     {/*          ) : ( */}
-                <>
-                  {/* Operador ternario expresión 2 False */}
-                  <li className="nav-item">
-                    <Link to="/login" className="nav-link active">
-                      <i className="bi bi-box-arrow-in-right"></i> Login
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/register" className="nav-link active">
-                      <i className="bi bi-person-plus"></i> Register
-                    </Link>
-                  </li>
-                </>
-          {/*     )} */}
+                  </li> */}
+              </>
+              {/*          ) : ( */}
+              <>
+                {/* Operador ternario expresión 2 False */}
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link active">
+                    <i className="bi bi-box-arrow-in-right"></i> Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/register" className="nav-link active">
+                    <i className="bi bi-person-plus"></i> Register
+                  </Link>
+                </li>
+              </>
+              {/*     )} */}
             </ul>
 
             {/* a Funcion toLocaleString */}
             <span className="navbar-text ms-auto">
-              <button className="btn btn-secondary">
-                {/* agregando iconos con font awesome */}
-                <i className="bi bi-cash">
-                  <FontAwesomeIcon icon={faCartShopping} />{" "}
-                </i>
-                Total: ${contador(total)}
-              </button>
+              <Link to="/cart">
+                <button className="btn btn-secondary">
+                  {/* agregando iconos con font awesome */}
+                  <i className="bi bi-cash">
+                    <FontAwesomeIcon icon={faCartShopping} />{" "}
+                  </i>
+                  Total: ${contador(total)}
+                </button>
+              </Link>
             </span>
           </div>
         </div>
@@ -86,4 +88,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
