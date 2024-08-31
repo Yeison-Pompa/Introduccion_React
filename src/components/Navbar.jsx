@@ -1,16 +1,17 @@
 import React from "react";
-import { contador } from "../utils/contador";// direccionando ruta utils
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'  // dev de fontawesome
-import {faHouse, faCartShopping} from '@fortawesome/free-solid-svg-icons' // dev de fontawesome Solid
+import { contador } from "../utils/contador"; // direccionando ruta utils
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // dev de fontawesome
+import { faHouse, faCartShopping } from "@fortawesome/free-solid-svg-icons"; // dev de fontawesome Solid
+import { Link } from "react-router-dom"; // Asegúrate de que la importación de Link es correcta
 
 const Navbar = () => {
-  const total = 25000; // creando una variable total 
-  const token = true;  // creando variable token
-  
+  const total = 25000; // creando una variable total
+  const token = (true); // creando variable token
+
   /* retornando hacia la vista  */
   return (
     <>
-    {/* creando el Navbar con bootstrap */}
+      {/* creando el Navbar con bootstrap */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-black text-white">
         <div className="container">
           <a className="navbar-brand" href="#">
@@ -30,51 +31,51 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  <i className="bi bi-house-door">
-                     </i> <FontAwesomeIcon icon={faHouse}/> Home 
-                </a>
+                <Link to="/" className="nav-link active" aria-current="page">
+                  <i className="bi bi-house-door"></i>{" "}
+                  <FontAwesomeIcon icon={faHouse} />
+                  Home
+                </Link>
               </li>
-              {/* Operador ternario expresion 1 True*/}
-              {token ? (
+              {/* Operador ternario expresión 1 True */}
+              {/* {token ? ( */}
                 <>
                   <li className="nav-item">
-                    <a className="nav-link active" href="#">
+                    <Link to="/profile" className="nav-link active">
                       <i className="bi bi-person"></i> Profile
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active" href="#">
+                    <Link to="/logout" className="nav-link active">
                       <i className="bi bi-box-arrow-right"></i> Logout
-                    </a>
+                    </Link>
                   </li>
                 </>
-              ) : 
-              
-              {/* Operador ternario expresion 2 False*/}
-              
-              (
+     {/*          ) : ( */}
                 <>
+                  {/* Operador ternario expresión 2 False */}
                   <li className="nav-item">
-                    <a className="nav-link active" href="#">
+                    <Link to="/login" className="nav-link active">
                       <i className="bi bi-box-arrow-in-right"></i> Login
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link active" href="#">
+                    <Link to="/register" className="nav-link active">
                       <i className="bi bi-person-plus"></i> Register
-                    </a>
+                    </Link>
                   </li>
                 </>
-              )}
+          {/*     )} */}
             </ul>
 
             {/* a Funcion toLocaleString */}
             <span className="navbar-text ms-auto">
               <button className="btn btn-secondary">
                 {/* agregando iconos con font awesome */}
-                <i className="bi bi-cash"><FontAwesomeIcon icon={faCartShopping}/>{" "}</i>
-                Total: ${contador(total)} 
+                <i className="bi bi-cash">
+                  <FontAwesomeIcon icon={faCartShopping} />{" "}
+                </i>
+                Total: ${contador(total)}
               </button>
             </span>
           </div>
@@ -85,3 +86,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

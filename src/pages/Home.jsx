@@ -1,10 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Header from "./Header"; // importando el Header
+import Header from "../components/Header"; // importando el Header
 import CardPizza from "./CardPizza"; // importando la cardPizza
 import { producto } from "../assets/pizzas"; // importando el js que contiene el array de objetos
 import "bootstrap/dist/css/bootstrap.min.css";
-import Detalle from "./Detalle";
+import Detalle from "../components/Detalle";
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);
