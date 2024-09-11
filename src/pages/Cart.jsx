@@ -50,7 +50,7 @@ const Cart = ({ producto }) => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h5>Detalles del pedido</h5>
       <h2>Cantidad de productos {total}</h2>
       <h3>Total a pagar {totalPagar}</h3>
