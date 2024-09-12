@@ -1,10 +1,13 @@
 import React from "react";
+import {useContext} from "react";
+import { CartContext } from "../context/CartContext";
 import { contador } from "../utils/contador"; // direccionando ruta utils
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // dev de fontawesome
 import { faHouse, faCartShopping } from "@fortawesome/free-solid-svg-icons"; // dev de fontawesome Solid
 import { Link } from "react-router-dom"; // Asegúrate de que la importación de Link es correcta
 
 const Navbar = () => {
+  const {carrito, SetCarrito} = useContext(CartContext);
   const total = 25000; // creando una variable total
   const token = true; // creando variable token
 

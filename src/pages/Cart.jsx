@@ -1,53 +1,17 @@
 import React from "react";
-import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const Cart = ({ producto }) => {
-  const [carrito, setCarrito] = useState([]);
-  let total = carrito.reduce(
-    (acumulador, producto) => (acumulador += producto.count),
-    0
-  );
-  let totalPagar = carrito.reduce(
-    (acumulador, producto) => (acumulador += producto.price * producto.count),
-    0
-  );
-  const incrementar = (producto) => {
-    let comparacion = carrito.findIndex((item) => item.id === producto.id);
-    let nuevoProducto = {
-      id: producto.id,
-      name: producto.name,
-      img: producto.img,
-      price: producto.price,
-      count: 1,
-    };
-    if (comparacion >= 0) {
-      carrito[comparacion].count++;
-      setCarrito([...carrito]);
-    } else {
-      setCarrito([...carrito, nuevoProducto]);
-    }
-  };
-
-  const decrementar = (producto) => {
-    // Encuentra el índice del producto en el carrito
-    let comparacion = carrito.findIndex((item) => item.id === producto.id);
-
-    if (comparacion >= 0) {
-      // Crea una copia del carrito para trabajar con él
-      let nuevoCarrito = [...carrito];
-
-      // Decrementa la cantidad del producto en el carrito
-      nuevoCarrito[comparacion].count--;
-
-      // Si la cantidad llega a cero, elimina el producto del carrito
-      if (nuevoCarrito[comparacion].count <= 0) {
-        nuevoCarrito.splice(comparacion, 1);
-      }
-
-      // Actualiza el estado del carrito con el nuevo carrito
-      setCarrito(nuevoCarrito);
-    }
-  };
+const { carrito, incrementar, decrementar } = useContext(CartContext)
+let total = carrito.reduce(
+  (acumulador, producto) => (acumulador += producto.count),
+  0
+);
+let totalPagar = carrito.reduce(
+  (acumulador, producto) => (acumulador += producto.price * producto.count),
+  0
+);
 
   return (
     <div className="container">
