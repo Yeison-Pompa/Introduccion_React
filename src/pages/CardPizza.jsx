@@ -1,7 +1,10 @@
-import React from "react";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+import { Link } from 'react-router-dom';
 
 const CardPizza = ({ pizza }) => {
-  // Enviando los valores por medio de la propiedad pizza
+  const { agregarAlCarrito } = useContext(CartContext);
+
   return (
     <>
       {/* Dando estilos a la card */}
@@ -15,7 +18,7 @@ const CardPizza = ({ pizza }) => {
           {/* Lista de ingredientes */}
           <ul>
             {pizza.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li> // Usar index como key
+              <li key={index}>{ingredient}</li>
             ))}
           </ul>
 
@@ -33,8 +36,11 @@ const CardPizza = ({ pizza }) => {
           </ul>
           {/* Agregando botones */}
           <div className="d-flex justify-content-between mt-3">
-            <button className="btn btn-primary">Ver más</button>
-            <button className="btn btn-secondary">Añadir</button>
+          
+            <button onClick={() => agregarAlCarrito(pizza)} className="btn btn-secondary">
+              Añadir
+            </button>
+            <Link to='/Cart'>Ver detalles</Link>
           </div>
         </div>
       </div>
@@ -43,3 +49,4 @@ const CardPizza = ({ pizza }) => {
 };
 
 export default CardPizza;
+

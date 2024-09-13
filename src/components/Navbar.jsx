@@ -7,10 +7,7 @@ import { faHouse, faCartShopping } from "@fortawesome/free-solid-svg-icons"; // 
 import { Link } from "react-router-dom"; // Asegúrate de que la importación de Link es correcta
 
 const Navbar = () => {
-  const {carrito, SetCarrito} = useContext(CartContext);
-  const total = 25000; // creando una variable total
-  const token = true; // creando variable token
-
+  const { total } = useContext(CartContext);
   /* retornando hacia la vista  */
   return (
     <>
@@ -79,7 +76,7 @@ const Navbar = () => {
                   <i className="bi bi-cash">
                     <FontAwesomeIcon icon={faCartShopping} />{" "}
                   </i>
-                  Total: ${contador(total)}
+                  Total: ${total.toFixed(2)}
                 </button>
               </Link>
             </span>

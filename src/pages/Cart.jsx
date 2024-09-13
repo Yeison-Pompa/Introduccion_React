@@ -1,39 +1,47 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
-const Cart = ({ producto }) => {
-const { carrito, incrementar, decrementar } = useContext(CartContext)
-let total = carrito.reduce(
-  (acumulador, producto) => (acumulador += producto.count),
-  0
-);
-let totalPagar = carrito.reduce(
-  (acumulador, producto) => (acumulador += producto.price * producto.count),
-  0
-);
+const Cart = () => {
+  const {
+    carrito,
+    eliminarDelCarrito,
+    aumentarCantidad,
+    disminuirCantidad,
+    total,
+  } = useContext(CartContext);
 
   return (
-    <div className="container">
-      <h5>Detalles del pedido</h5>
-      <h2>Cantidad de productos {total}</h2>
-      <h3>Total a pagar {totalPagar}</h3>
-      <div className="p3">
-        {producto.map((producto) => (
-          <div className="d-flex" key={producto.id}>
+    <div className="cart">
+      <h2>Carrito de Compras</h2>
+      {carrito.length === 0 ? (
+        <p>El carrito está vacío</p>
+      ) : (
+        carrito.map((producto) => (
+          <div key={producto.id} className="cart-item">
+            <img src={producto.img} alt={producto.nombre} width="100" />
+            <h5>{producto.title}</h5>
+            <p>Precio unitario: ${producto.price.toFixed(2)}</p>
+            <p>Cantidad: {producto.cant}</p>
             <div>
-              <img src={producto.img} className="w-25" alt={producto.name} />
-              <p>{producto.name}</p>
+              <button
+                onClick={() => disminuirCantidad(producto)}
+                disabled={producto.cant === 1}
+              >
+                -
+              </button>
+              <button onClick={() => aumentarCantidad(producto)}>+</button>
+              <button onClick={() => eliminarDelCarrito(producto.id)}>
+                Eliminar
+              </button>
             </div>
-            <div>
-              <button onClick={() => incrementar(producto)}>+</button>
-              <button onClick={() => decrementar(producto)}>-</button>
-            </div>
+            <p>Subtotal: ${(producto.price * producto.cant).toFixed(2)}</p>
           </div>
-        ))}
-      </div>
+        ))
+      )}
+      <h3>Total a pagar: ${total.toFixed(2)}</h3>
     </div>
   );
 };
 
 export default Cart;
+
