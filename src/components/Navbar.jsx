@@ -4,11 +4,13 @@ import { CartContext } from "../context/CartContext";
 import { contador } from "../utils/contador"; // direccionando ruta utils
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // dev de fontawesome
 import { faHouse, faCartShopping } from "@fortawesome/free-solid-svg-icons"; // dev de fontawesome Solid
-import { Link } from "react-router-dom"; // Asegúrate de que la importación de Link es correcta
+import { NavLink } from "react-router-dom"; // Asegúrate de que la importación de Link es correcta
+import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
   const { total } = useContext(CartContext);
   /* retornando hacia la vista  */
+  const { logout, token } = useContext(UserContext);
   return (
     <>
       {/* creando el Navbar con bootstrap */}
@@ -31,46 +33,47 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="/" className="nav-link active" aria-current="page">
+                <NavLink to="/" className="nav-link active" aria-current="page">
                   <i className="bi bi-house-door"></i>{" "}
                   <FontAwesomeIcon icon={faHouse} />
                   Home
-                </Link>
+                </NavLink>
               </li>
               {/* Operador ternario expresión 1 True */}
-              {/* {token ? ( */}
+              {token ? (
               <>
                 <li className="nav-item">
-                  <Link to="/profile" className="nav-link active">
+                  <NavLink to="/profile" className="nav-link active">
                     <i className="bi bi-person"></i> Profile
-                  </Link>
+                  </NavLink>
                 </li>
-                {/*   <li className="nav-item">
-                    <Link to="/logout" className="nav-link active">
-                      <i className="bi bi-box-arrow-right"></i> Logout
-                    </Link>
-                  </li> */}
+                  <li className="nav-item">
+                    <NavLink to="/logout" className="nav-link active">
+                     {/*  <i className="bi bi-box-arrow-right"></i> Logout */}
+                     <button onClick={logout}>Logout</button>
+                    </NavLink>
+                  </li>
               </>
-              {/*          ) : ( */}
+                       ) : (
               <>
                 {/* Operador ternario expresión 2 False */}
                 <li className="nav-item">
-                  <Link to="/login" className="nav-link active">
+                  <NavLink to="/login" className="nav-link active">
                     <i className="bi bi-box-arrow-in-right"></i> Login
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/register" className="nav-link active">
+                  <NavLink to="/register" className="nav-link active">
                     <i className="bi bi-person-plus"></i> Register
-                  </Link>
+                  </NavLink>
                 </li>
               </>
-              {/*     )} */}
+                  )}
             </ul>
 
             {/* a Funcion toLocaleString */}
             <span className="navbar-text ms-auto">
-              <Link to="/cart">
+              <NavLink to="/cart">
                 <button className="btn btn-secondary">
                   {/* agregando iconos con font awesome */}
                   <i className="bi bi-cash">
@@ -78,7 +81,7 @@ const Navbar = () => {
                   </i>
                   Total: ${total.toFixed(2)}
                 </button>
-              </Link>
+              </NavLink>
             </span>
           </div>
         </div>

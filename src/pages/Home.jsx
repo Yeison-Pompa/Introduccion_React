@@ -8,9 +8,7 @@ import Detalle from "../components/Detalle";
 import { ApiContext } from "../context/ApiContext";
 
 const Home = () => {
-  const {pizzas} = useContext(ApiContext)
-  
-
+  const { pizzas } = useContext(ApiContext);
 
   return (
     /* renderizacion dionamica */

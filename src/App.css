@@ -13,3 +13,8 @@ body {
 main {
   flex: 1;
 } */
+
+.nav-link active{
+
+  color:darkgoldenrod;
+}

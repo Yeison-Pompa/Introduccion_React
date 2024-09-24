@@ -11,7 +11,7 @@ const Cart = () => {
   } = useContext(CartContext);
 
   return (
-    <div className="cart">
+    <div className="container">
       <h2>Carrito de Compras</h2>
       {carrito.length === 0 ? (
         <p>El carrito está vacío</p>
@@ -44,4 +44,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
