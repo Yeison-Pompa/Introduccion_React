@@ -14,23 +14,23 @@ import { UserContext } from "./context/UserContext";
 import { useContext } from "react";
 
 function App() {
-  // Reemplazamos logout por user o token para indicar autenticación
-  const { user } = useContext(UserContext);
+  const { token } = useContext(UserContext); // Usamos el token del contexto
 
   return (
     <>
       <Navbar />
       <Routes>
+        {/* Ruta pública: home */}
         <Route path="/" element={<Home />} />
 
-        {/* Redirigir a home si el usuario está autenticado */}
+        {/* Redirigir al home si ya está autenticado */}
         <Route
           path="/register"
-          element={!user ? <Register /> : <Navigate to="/" />}
+          element={!token ? <Register /> : <Navigate to="/" />}
         />
         <Route
           path="/login"
-          element={!user ? <Login /> : <Navigate to="/" />}
+          element={!token ? <Login /> : <Navigate to="/" />}
         />
 
         {/* Ruta para el carrito */}
@@ -39,10 +39,10 @@ function App() {
         {/* Ruta protegida para perfil */}
         <Route
           path="/profile"
-          element={user ? <Profile /> : <Navigate to="/login" />}
+          element={token ? <Profile /> : <Navigate to="/login" />}
         />
 
-        {/* Detalle de producto, usando ID dinámico */}
+        {/* Detalle de producto */}
         <Route path="/detalle/:id" element={<Detalle />} />
 
         {/* Ruta para páginas no encontradas */}
