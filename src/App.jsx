@@ -6,28 +6,47 @@ import Login from "./pages/Login";
 import "./App.css";
 import Cart from "./pages/Cart";
 import { producto } from "./assets/pizzas";
-import { Route, Routes } from "react-router-dom"; // importando las rutas, ruta
+import { Route, Routes, Navigate } from "react-router-dom"; // Se añade Navigate
 import Profile from "./components/Profile";
 import NotFound from "./components/NotFound";
 import Detalle from "./components/Detalle";
+import { UserContext } from "./context/UserContext";
+import { useContext } from "react";
 
 function App() {
+  // Reemplazamos logout por user o token para indicar autenticación
+  const { user } = useContext(UserContext);
+
   return (
-    /* Renderizando los componentes */
     <>
       <Navbar />
       <Routes>
-        {" "}
-        {/* Envolviendo los componentes */}
         <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+
+        {/* Redirigir a home si el usuario está autenticado */}
+        <Route
+          path="/register"
+          element={!user ? <Register /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to="/" />}
+        />
+
+        {/* Ruta para el carrito */}
         <Route path="/cart" element={<Cart producto={producto} />} />
-        <Route path="/pizza/p001" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />{" "}
-        {/* Crear nuevos componentes */}
-        <Route path="*" element={<NotFound />} /> {/* Crear nuevo componente */}
-        <Route path="/detalle/:id" element={<Detalle/>} />
+
+        {/* Ruta protegida para perfil */}
+        <Route
+          path="/profile"
+          element={user ? <Profile /> : <Navigate to="/login" />}
+        />
+
+        {/* Detalle de producto, usando ID dinámico */}
+        <Route path="/detalle/:id" element={<Detalle />} />
+
+        {/* Ruta para páginas no encontradas */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>

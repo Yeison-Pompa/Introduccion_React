@@ -1,5 +1,5 @@
 import React from "react";
-import {useContext} from "react";
+import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { contador } from "../utils/contador"; // direccionando ruta utils
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // dev de fontawesome
@@ -41,34 +41,34 @@ const Navbar = () => {
               </li>
               {/* Operador ternario expresión 1 True */}
               {token ? (
-              <>
-                <li className="nav-item">
-                  <NavLink to="/profile" className="nav-link active">
-                    <i className="bi bi-person"></i> Profile
-                  </NavLink>
-                </li>
+                <>
                   <li className="nav-item">
-                    <NavLink to="/logout" className="nav-link active">
-                     {/*  <i className="bi bi-box-arrow-right"></i> Logout */}
-                     <button onClick={logout}>Logout</button>
+                    <NavLink to="/profile" className="nav-link active">
+                      <i className="bi bi-person"></i> Profile
                     </NavLink>
                   </li>
-              </>
-                       ) : (
-              <>
-                {/* Operador ternario expresión 2 False */}
-                <li className="nav-item">
-                  <NavLink to="/login" className="nav-link active">
-                    <i className="bi bi-box-arrow-in-right"></i> Login
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink to="/register" className="nav-link active">
-                    <i className="bi bi-person-plus"></i> Register
-                  </NavLink>
-                </li>
-              </>
-                  )}
+                  <li className="nav-item">
+                    <NavLink to="/logout" className="nav-link active">
+                      {/*  <i className="bi bi-box-arrow-right"></i> Logout */}
+                      <button onClick={logout}>Logout</button>
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  {/* Operador ternario expresión 2 False */}
+                  <li className="nav-item">
+                    <NavLink to="/login" className="nav-link active">
+                      <i className="bi bi-box-arrow-in-right"></i> Login
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/register" className="nav-link active">
+                      <i className="bi bi-person-plus"></i> Register
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
 
             {/* a Funcion toLocaleString */}
