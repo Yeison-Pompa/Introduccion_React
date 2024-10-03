@@ -1,46 +1,52 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [contraseña, setContraseña] = useState("");
-  const [confirmar, setConfirmar] = useState("");
+  const { handleSubmit, setEmail, setPassword } = useContext(UserContext);
 
-  //Estado para los errores
-  const [error, setError] = useState(false);
-  //Función antes de enviar el formulario
+  // Estado para los errores
+  const [error, setError] = useState(null);
+  const [emailState, setEmailState] = useState("");
+  const [passwordState, setPasswordState] = useState("");
+  const [confirmPasswordState, setConfirmPasswordState] = useState(""); // Nuevo estado para la confirmación de contraseña
+
+  // Función para validar los datos antes de enviar el formulario
   const validarDatos = (e) => {
     e.preventDefault();
-    //Validación;
-    if (!email || !contraseña || !confirmar) {
-      alert("Debe llenar todos los campos");
-    } else if (contraseña.length < 6 || confirmar.length < 6) {
-      alert("La contraseña debe tener más de 6 caracteres");
-    } else if (contraseña !== confirmar) {
-      alert("Las contraseñas no coinciden");
-    } else {
-      alert("Registrado correctamente");
-    }
-    {
-      setError(true);
+
+    // Validación de los campos
+    if (!emailState || !passwordState || !confirmPasswordState) {
+      setError("Debe llenar todos los campos");
       return;
+    } else if (passwordState.length < 6) {
+      setError("La contraseña debe tener más de 6 caracteres");
+      return;
+    } else if (passwordState !== confirmPasswordState) {
+      setError("Las contraseñas no coinciden");
+      return;
+    } else {
+      setError(null); // Limpiamos el error si todo está bien
     }
-    setError(false);
+
+    // Si la validación pasa, enviamos los datos
+    setEmail(emailState);
+    setPassword(passwordState);
+    handleSubmit(e); // Llama a la función handleSubmit para iniciar sesión
   };
 
   return (
     <div className="container">
-      <h1>Register</h1>
+      <h1>Registro</h1>
       <form className="formulario" onSubmit={validarDatos}>
-        {error ? <p>Todos los campos son obligatorios</p> : null}
+        {error && <p>{error}</p>}
         <div className="form-group">
           <label>Email</label>
           <input
             type="email"
             name="email"
             className="form-control"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
+            onChange={(e) => setEmailState(e.target.value)}
+            value={emailState}
           />
         </div>
         <div className="form-group">
@@ -49,29 +55,37 @@ const Register = () => {
             type="password"
             name="contraseña"
             className="form-control"
-            onChange={(e) => setContraseña(e.target.value)}
-            value={contraseña}
+            onChange={(e) => setPasswordState(e.target.value)}
+            value={passwordState}
           />
         </div>
-
         <div className="form-group">
-          <label>Confirmar</label>
+          <label>Confirmar Contraseña</label>
           <input
             type="password"
-            name="confirmar"
+            name="confirmarContraseña"
             className="form-control"
-            onChange={(e) => setConfirmar(e.target.value)}
-            value={confirmar}
+            onChange={(e) => setConfirmPasswordState(e.target.value)} // Cambiado a setConfirmPasswordState
+            value={confirmPasswordState} // Cambiado a confirmPasswordState
           />
         </div>
-
-        <button type="submit" className="btn btn-primary">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={
+            !emailState ||
+            !passwordState ||
+            !confirmPasswordState ||
+            passwordState.length < 6
+          }
+        >
           Enviar
         </button>
       </form>
       <hr />
       <h1>Datos ingresados</h1>
-      {email} - {contraseña} - {confirmar}
+      <p>Email: {emailState}</p>
+      <p>Contraseña: {passwordState ? "******" : ""}</p>
     </div>
   );
 };
