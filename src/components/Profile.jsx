@@ -1,32 +1,24 @@
-import React from "react";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../context/UserContext";
 
 const Profile = () => {
+  const { validar, user } = useContext(UserContext);
+
+  useEffect(() => {
+    validar();
+  }, [validar]);
+
   return (
-    <>
-    <div className="container">
-      <form>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="alumno@67desafiolatam.com"
-          />
-        
-        </div>
-        
-     
-        <button type="submit" className="btn btn-primary">
-       Cerrar sesión
-        </button>
-      </form>
-      </div>
-    </>
+    <div style={{ textAlign: "center" }}>
+      <img
+        src="https://i.pinimg.com/236x/bd/1c/c7/bd1cc751865c67de695216da045579d5.jpg"
+        alt=""
+        style={{ borderRadius: "50%" }}
+      />
+
+      <h3>Email: {user}</h3>
+      <button className="btn btn-secondary">cerrar sesion</button>
+    </div>
   );
 };
-
 export default Profile;

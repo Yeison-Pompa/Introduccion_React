@@ -34,7 +34,7 @@ function App() {
         />
 
         {/* Ruta para el carrito */}
-        <Route path="/cart" element={<Cart producto={producto} />} />
+        <Route path="/cart" element={<Cart /* producto={producto} */ />} />
 
         {/* Ruta protegida para perfil */}
         <Route

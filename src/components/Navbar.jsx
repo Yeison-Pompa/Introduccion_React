@@ -48,9 +48,7 @@ const Navbar = () => {
                   </li>
                   <li className="nav-item">
                  
-                    {/* <button className="btn btn-link nav-link active" onClick={logout}>
-                      Logout
-                    </button> */}
+                  <button onClick={logout}>Logout</button>
                   </li>
                 </>
               ) : (
@@ -65,9 +63,7 @@ const Navbar = () => {
                       Register
                     </NavLink>
                   </li>
-                  <li className="nav-item m-2">
-                  <button onClick={logout}>Logout</button>
-                </li>
+                 
                 </>
               )}
             </ul>

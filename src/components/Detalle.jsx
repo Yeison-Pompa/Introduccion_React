@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CardPizza from "../pages/CardPizza";
 import { useParams } from "react-router-dom";
+import { CartContext } from '../context/CartContext';
 
 const Detalle = () => {
-  const [pizza, setPizza] = useState(null);
+  const [pizza, setPizza] = useState(null); // Inicializamos como null para un objeto
+  const { agregarAlCarrito } = useContext(CartContext);
   const [error, setError] = useState(null);
   const { id } = useParams();
 
@@ -38,18 +40,23 @@ const Detalle = () => {
 
   useEffect(() => {
     obtenerInformacion();
-    // No es necesario pasar 'url' en las dependencias si 'id' no cambia
-  }, [id]); // Mantener 'url' en las dependencias para re-fetch si cambia
+  }, [id]); // Mantener 'id' en las dependencias para re-fetch si cambia
 
   if (error) {
     return <div className="error">{error}</div>;
   }
 
+  if (!pizza) {
+    return <p>Cargando...</p>;
+  }
+
   return (
     <div className="detalle-pizza">
-      {pizza ? <CardPizza pizza={pizza} /> : <p>Cargando...</p>}
-    </div>
+      <CardPizza pizza={pizza} />
+    
+   </div>
   );
 };
 
 export default Detalle;
+
